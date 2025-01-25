@@ -36,11 +36,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>23.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>edu.buffalo.cse</groupId>
-            <artifactId>cse116</artifactId>
-            <version>1.0</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
         <dependency>
