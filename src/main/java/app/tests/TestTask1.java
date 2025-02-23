@@ -18,6 +18,83 @@ public class TestTask1 {
 
     // TODO: write your tests here
 
+    public void comparePLayers (Player player1, Player player2){
+        assertEquals(player1.getLocation().getX() ,player2.getLocation().getX(), EPSILON);
+        assertEquals(player1.getLocation().getY() , player2.getLocation().getY(),EPSILON);
+
+        assertEquals(player1.getOrientation().getX() ,player2.getOrientation().getX(),EPSILON);
+        assertEquals(player1.getOrientation().getY(),player2.getOrientation().getY(),EPSILON);
+
+        assertEquals(player1.getVelocity().getX() ,player2.getVelocity().getX(),EPSILON);
+        assertEquals(player1.getVelocity().getY(),player2.getVelocity().getY(),EPSILON);
+
+        assertTrue(player1.getHP() == player2.getHP());
+        assertTrue(player1.getMaxHP() == player2.getMaxHP());
+    }
+
+    @Test
+    public void testTakeDamage(){
+        Vector2D location = new Vector2D(0.0,0.0);
+        Player player1 = new Player(location,100);
+        Player player2 = new Player(location,100);
+        comparePLayers(player1,player2);
+
+        player1.setHP(40);
+        assertTrue(player1.getHP() == 40);
+
+        player2.takeDamage(60);
+        comparePLayers(player1,player2);
+
+        player2.takeDamage(-1);
+        assertTrue(player2.getHP() == 40);
+
+        player2.takeDamage(100);
+        assertTrue(player2.getHP() == -60);
+    }
+
+    @Test
+    public void testUpdateObjects(){
+        Vector2D location = new Vector2D(5.0,1.0);
+        Player player1 = new Player(location,100);
+
+        PhysicsEngine test = new PhysicsEngine();
+
+        player1.getVelocity().setX(2.0);
+        player1.getVelocity().setY(3.0);
+
+        test.updateObject(player1,5.0);
+
+        assertEquals(player1.getLocation().getX(),15.0,EPSILON);
+        assertEquals(player1.getLocation().getY(),16.0,EPSILON);
+
+        test.updateObject(player1,-4.5);
+
+        assertEquals(player1.getLocation().getX(),6.0,EPSILON);
+        assertEquals(player1.getLocation().getY(),2.5,EPSILON);
+    }
+
+    @Test
+    public void testDetectCollision(){
+        Vector2D location = new Vector2D(6.0,2.0);
+        Vector2D dimensions = new Vector2D(1.0,1.0);
+        Hitbox hb1 = new Hitbox(location,dimensions);
+
+        Vector2D location2 = new Vector2D(9.0,3.0);
+        Vector2D dimensions2 = new Vector2D(1.0,1.0);
+        Hitbox hb2 = new Hitbox(location2,dimensions2);
+
+        PhysicsEngine test = new PhysicsEngine();
+
+        assertFalse(test.detectCollision(hb1, hb2));
+
+        Vector2D location3 = new Vector2D(6.5,2.5);
+        Vector2D dimensions3 = new Vector2D(1.0,1.0);
+        Hitbox hb3 = new Hitbox(location3,dimensions3);
+
+        assertTrue(test.detectCollision(hb1,hb3));
+        assertTrue(test.detectCollision(hb3,hb1));
+    }
+
     @Test
     public void testWallCollisionsSimple() {
         // we give you the tests for wall collisions. Don't change them
