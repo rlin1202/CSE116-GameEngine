@@ -18,7 +18,7 @@ public class TestTask1 {
 
     // TODO: write your tests here
 
-    public void comparePLayers (Player player1, Player player2){
+    public void comparePlayers (Player player1, Player player2){
         assertEquals(player1.getLocation().getX() ,player2.getLocation().getX(), EPSILON);
         assertEquals(player1.getLocation().getY() , player2.getLocation().getY(),EPSILON);
 
@@ -37,13 +37,13 @@ public class TestTask1 {
         Vector2D location = new Vector2D(0.0,0.0);
         Player player1 = new Player(location,100);
         Player player2 = new Player(location,100);
-        comparePLayers(player1,player2);
+        comparePlayers(player1,player2);
 
         player1.setHP(40);
         assertTrue(player1.getHP() == 40);
 
         player2.takeDamage(60);
-        comparePLayers(player1,player2);
+        comparePlayers(player1,player2);
 
         player2.takeDamage(-1);
         assertTrue(player2.getHP() == 40);

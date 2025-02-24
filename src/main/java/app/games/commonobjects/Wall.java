@@ -16,5 +16,9 @@ public class Wall extends StaticGameObject {
         this.defaultSpriteLocation = new SpriteLocation(3, 0);
     }
 
-
+    public void collideWithDynamicObject(DynamicGameObject gameObject){
+        if (gameObject.getLocation().getX() == getLocation().getX()){
+            gameObject.getLocation().setX(Math.round(gameObject.getLocation().getX()));
+        }
+    }
 }
