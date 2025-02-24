@@ -50,7 +50,10 @@ public class PhysicsEngine {
     public boolean detectCollision(Hitbox hb1, Hitbox hb2){
         // TODO: return true if the 2 hitboxes overlap; false otherwise
 
-        /*first check */
+        /*first check if hb1 and hb2 overlap
+        * if hb1s x2 is less than hb2s x1 they are not overlapping
+        * if hb2s y1 is greater than hb1s y2 they are not overlapping*/
+
         double hb1X = hb1.getLocation().getX();
         double hb1X2 = hb1.getLocation().getX() + hb1.getDimensions().getX();
 
@@ -62,5 +65,25 @@ public class PhysicsEngine {
 
         double hb2Y = hb2.getLocation().getY();
         double hb2Y2 = hb2.getLocation().getY() + hb2.getDimensions().getY();
+
+        if (hb2X >= hb1X  && hb2X <= hb1X2){
+            if (hb2Y >= hb1Y && hb2Y <= hb1Y2){
+                return true;
+            }else if (hb2Y2 >= hb1Y && hb2Y2 <= hb1Y2){
+                return false;
+            }else{
+                return false;
+            }
+        }else if( hb2X2 >= hb1X && hb2X2 <= hb1X2){
+            if (hb2Y >= hb1Y && hb2Y <= hb1Y2){
+                return true;
+            }else if (hb2Y2 >= hb1Y && hb2Y2 <= hb1Y2){
+                return false;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 }
