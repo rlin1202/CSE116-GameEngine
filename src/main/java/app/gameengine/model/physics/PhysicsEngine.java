@@ -70,7 +70,7 @@ public class PhysicsEngine {
             if (hb2Y >= hb1Y && hb2Y <= hb1Y2){
                 return true;
             }else if (hb2Y2 >= hb1Y && hb2Y2 <= hb1Y2){
-                return false;
+                return true;
             }else{
                 return false;
             }
@@ -78,7 +78,7 @@ public class PhysicsEngine {
             if (hb2Y >= hb1Y && hb2Y <= hb1Y2){
                 return true;
             }else if (hb2Y2 >= hb1Y && hb2Y2 <= hb1Y2){
-                return false;
+                return true;
             }else{
                 return false;
             }
