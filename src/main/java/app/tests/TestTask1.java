@@ -1,5 +1,6 @@
 package app.tests;
 
+import app.gameengine.model.gameobjects.DynamicGameObject;
 import app.gameengine.model.gameobjects.Player;
 import app.gameengine.model.physics.Hitbox;
 import app.gameengine.model.physics.PhysicsEngine;
@@ -30,6 +31,30 @@ public class TestTask1 {
 
         assertTrue(player1.getHP() == player2.getHP());
         assertTrue(player1.getMaxHP() == player2.getMaxHP());
+    }
+
+    @Test
+    public void testDynamicObjectConstructor(){
+        Vector2D location = new Vector2D(0.0,5.0);
+        Player player1 = new Player(location,100);
+
+        assertTrue(player1.getHP() == 100 && player1.getMaxHP() == 100);
+        assertEquals(player1.getLocation().getX(),0.0,EPSILON);
+        assertEquals(player1.getLocation().getY(),5.0,EPSILON);
+
+        Vector2D location2 = new Vector2D(2.9,4.6);
+        Player player2 = new Player(location2, 250);
+
+        assertTrue(player2.getHP() == 250 && player2.getMaxHP() == 250);
+        assertEquals(player2.getLocation().getX(),2.9,EPSILON);
+        assertEquals(player2.getLocation().getY(),4.6,EPSILON);
+
+        Vector2D location3 = new Vector2D(5.1,4.9);
+        Player player3 = new Player(location3, 341);
+
+        assertTrue(player3.getHP() == 341 && player3.getMaxHP() == 341);
+        assertEquals(player3.getLocation().getX(),5.1,EPSILON);
+        assertEquals(player3.getLocation().getY(),4.9,EPSILON);
     }
 
     @Test
