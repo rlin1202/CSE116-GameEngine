@@ -50,10 +50,8 @@ public class Wall extends StaticGameObject {
         double wallX = this.getLocation().getX();
         double wallY = this.getLocation().getY();
 
-
         double objectOverlapX = findOverlap(gameObject).getX();
         double objectOverlapY = findOverlap(gameObject).getY();
-
 
         if (objectOverlapX < objectOverlapY) {
             if (gameObjectX < wallX) {

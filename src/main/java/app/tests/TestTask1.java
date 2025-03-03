@@ -43,7 +43,7 @@ public class TestTask1 {
         assertEquals(player1.getLocation().getX(),0.0,EPSILON);
         assertEquals(player1.getLocation().getY(),5.0,EPSILON);
         assertEquals(player1.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(player1.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player1.getOrientation().getY(),1.0,EPSILON);
         assertEquals(player1.getVelocity().getX(),0.0,EPSILON);
         assertEquals(player1.getVelocity().getY(),0.0,EPSILON);
 
@@ -55,7 +55,7 @@ public class TestTask1 {
         assertEquals(player2.getLocation().getX(),2.9,EPSILON);
         assertEquals(player2.getLocation().getY(),4.6,EPSILON);
         assertEquals(player2.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(player2.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player2.getOrientation().getY(),1.0,EPSILON);
         assertEquals(player2.getVelocity().getX(),0.0,EPSILON);
         assertEquals(player2.getVelocity().getY(),0.0,EPSILON);
 
@@ -67,7 +67,7 @@ public class TestTask1 {
         assertEquals(player3.getLocation().getX(),5.1,EPSILON);
         assertEquals(player3.getLocation().getY(),4.9,EPSILON);
         assertEquals(player3.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(player3.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player3.getOrientation().getY(),1.0,EPSILON);
         assertEquals(player3.getVelocity().getX(),0.0,EPSILON);
         assertEquals(player3.getVelocity().getY(),0.0,EPSILON);
 
@@ -79,7 +79,7 @@ public class TestTask1 {
         assertEquals(player4.getLocation().getX(),0.0,EPSILON);
         assertEquals(player4.getLocation().getY(),0.0,EPSILON);
         assertEquals(player4.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(player4.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player4.getOrientation().getY(),1.0,EPSILON);
         assertEquals(player4.getVelocity().getX(),0.0,EPSILON);
         assertEquals(player4.getVelocity().getY(),0.0,EPSILON);
 
@@ -91,7 +91,7 @@ public class TestTask1 {
         assertEquals(player5.getLocation().getX(),9.9,EPSILON);
         assertEquals(player5.getLocation().getY(),5.6,EPSILON);
         assertEquals(player5.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(player5.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player5.getOrientation().getY(),1.0,EPSILON);
         assertEquals(player5.getVelocity().getX(),0.0,EPSILON);
         assertEquals(player5.getVelocity().getY(),0.0,EPSILON);
 
@@ -103,7 +103,7 @@ public class TestTask1 {
         assertEquals(player6.getLocation().getX(),0.1234,EPSILON);
         assertEquals(player6.getLocation().getY(),0.5678,EPSILON);
         assertEquals(player6.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(player6.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player6.getOrientation().getY(),1.0,EPSILON);
         assertEquals(player6.getVelocity().getX(),0.0,EPSILON);
         assertEquals(player6.getVelocity().getY(),0.0,EPSILON);
 
@@ -115,7 +115,7 @@ public class TestTask1 {
         assertEquals(screwAutoLabs.getLocation().getX(),0.0,EPSILON);
         assertEquals(screwAutoLabs.getLocation().getY(),0.0,EPSILON);
         assertEquals(screwAutoLabs.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(screwAutoLabs.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(screwAutoLabs.getOrientation().getY(),1.0,EPSILON);
         assertEquals(screwAutoLabs.getVelocity().getX(),0.0,EPSILON);
         assertEquals(screwAutoLabs.getVelocity().getY(),0.0,EPSILON);
 
@@ -125,7 +125,7 @@ public class TestTask1 {
         assertEquals(pleasePass.getLocation().getX(),0.0,EPSILON);
         assertEquals(pleasePass.getLocation().getY(),0.0,EPSILON);
         assertEquals(pleasePass.getOrientation().getX(),0.0,EPSILON);
-        assertEquals(pleasePass.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(pleasePass.getOrientation().getY(),1.0,EPSILON);
         assertEquals(pleasePass.getVelocity().getX(),0.0,EPSILON);
         assertEquals(pleasePass.getVelocity().getY(),0.0,EPSILON);
     }

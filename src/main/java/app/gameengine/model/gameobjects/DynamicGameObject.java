@@ -6,7 +6,7 @@ public abstract class DynamicGameObject extends GameObject {
 
     protected Vector2D velocity = new Vector2D(0.0, 0.0);
 
-    private Vector2D orientation = new Vector2D(0.0, 0.1);
+    private Vector2D orientation = new Vector2D(0.0, 1.0);
     private int maxHP;
     private int currentHP;
 
