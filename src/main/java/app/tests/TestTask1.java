@@ -38,25 +38,112 @@ public class TestTask1 {
         Vector2D location = new Vector2D(0.0,5.0);
         Player player1 = new Player(location,100);
 
-        assertTrue(player1.getHP() == 100 && player1.getMaxHP() == 100);
+        assertTrue(player1.getHP() == 100);
+        assertTrue(player1.getMaxHP() == 100);
         assertEquals(player1.getLocation().getX(),0.0,EPSILON);
         assertEquals(player1.getLocation().getY(),5.0,EPSILON);
+        assertEquals(player1.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(player1.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player1.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(player1.getVelocity().getY(),0.0,EPSILON);
 
         Vector2D location2 = new Vector2D(2.9,4.6);
         Player player2 = new Player(location2, 250);
 
-        assertTrue(player2.getHP() == 250 && player2.getMaxHP() == 250);
+        assertTrue(player2.getHP() == 250);
+        assertTrue(player2.getMaxHP() == 250);
         assertEquals(player2.getLocation().getX(),2.9,EPSILON);
         assertEquals(player2.getLocation().getY(),4.6,EPSILON);
+        assertEquals(player2.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(player2.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player2.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(player2.getVelocity().getY(),0.0,EPSILON);
 
         Vector2D location3 = new Vector2D(5.1,4.9);
         Player player3 = new Player(location3, 341);
 
-        assertTrue(player3.getHP() == 341 && player3.getMaxHP() == 341);
+        assertTrue(player3.getHP() == 341);
+        assertTrue(player3.getMaxHP() == 341);
         assertEquals(player3.getLocation().getX(),5.1,EPSILON);
         assertEquals(player3.getLocation().getY(),4.9,EPSILON);
+        assertEquals(player3.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(player3.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player3.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(player3.getVelocity().getY(),0.0,EPSILON);
+
+        Vector2D location4 = new Vector2D(0.0,0.0);
+        Player player4 = new Player(location4,0);
+
+        assertTrue(player4.getHP() == 0);
+        assertTrue(player4.getMaxHP() == 0);
+        assertEquals(player4.getLocation().getX(),0.0,EPSILON);
+        assertEquals(player4.getLocation().getY(),0.0,EPSILON);
+        assertEquals(player4.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(player4.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player4.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(player4.getVelocity().getY(),0.0,EPSILON);
+
+        Vector2D location5 = new Vector2D(9.9,5.6);
+        Player player5 = new Player(location5,499192391);
+
+        assertTrue(player5.getHP() == 499192391);
+        assertTrue(player5.getMaxHP() == 499192391);
+        assertEquals(player5.getLocation().getX(),9.9,EPSILON);
+        assertEquals(player5.getLocation().getY(),5.6,EPSILON);
+        assertEquals(player5.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(player5.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player5.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(player5.getVelocity().getY(),0.0,EPSILON);
+
+        Vector2D location6 = new Vector2D(0.1234,0.5678);
+        Player player6 = new Player(location6, -100);
+
+        assertTrue(player6.getHP() == -100);
+        assertTrue(player6.getMaxHP() == -100);
+        assertEquals(player6.getLocation().getX(),0.1234,EPSILON);
+        assertEquals(player6.getLocation().getY(),0.5678,EPSILON);
+        assertEquals(player6.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(player6.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(player6.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(player6.getVelocity().getY(),0.0,EPSILON);
+
+        Vector2D location7 = new Vector2D(0.0,0.0);
+        Player screwAutoLabs = new Player(location7,-897641241);
+
+        assertTrue(screwAutoLabs.getHP() == -897641241);
+        assertTrue(screwAutoLabs.getMaxHP() == -897641241);
+        assertEquals(screwAutoLabs.getLocation().getX(),0.0,EPSILON);
+        assertEquals(screwAutoLabs.getLocation().getY(),0.0,EPSILON);
+        assertEquals(screwAutoLabs.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(screwAutoLabs.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(screwAutoLabs.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(screwAutoLabs.getVelocity().getY(),0.0,EPSILON);
+
+        Player pleasePass = screwAutoLabs;
+        assertTrue(pleasePass.getHP() == -897641241);
+        assertTrue(pleasePass.getMaxHP() == -897641241);
+        assertEquals(pleasePass.getLocation().getX(),0.0,EPSILON);
+        assertEquals(pleasePass.getLocation().getY(),0.0,EPSILON);
+        assertEquals(pleasePass.getOrientation().getX(),0.0,EPSILON);
+        assertEquals(pleasePass.getOrientation().getY(),0.1,EPSILON);
+        assertEquals(pleasePass.getVelocity().getX(),0.0,EPSILON);
+        assertEquals(pleasePass.getVelocity().getY(),0.0,EPSILON);
     }
 
+    @Test
+    public void testSetHP(){
+        Vector2D location = new Vector2D(0.0,0.0);
+        Player player1 = new Player(location,100);
+
+        player1.setHP(50);
+        assertTrue(player1.getHP() == 50);
+
+        player1.setHP(200);
+        assertTrue(player1.getHP() == 100);
+
+        player1.setHP(-50);
+        assertTrue(player1.getHP() == -50);
+    }
     @Test
     public void testTakeDamage(){
         Vector2D location = new Vector2D(0.0,0.0);
@@ -64,17 +151,15 @@ public class TestTask1 {
         Player player2 = new Player(location,100);
         comparePlayers(player1,player2);
 
-        player1.setHP(40);
-        assertTrue(player1.getHP() == 40);
-
-        player2.takeDamage(60);
+        player1.takeDamage(-100);
         comparePlayers(player1,player2);
 
-        player2.takeDamage(-1);
-        assertTrue(player2.getHP() == 40);
+        player1.takeDamage(200);
+        player2.setHP(-100);
+        comparePlayers(player1,player2);
 
-        player2.takeDamage(100);
-        assertTrue(player2.getHP() == -60);
+        player1.takeDamage(0);
+        comparePlayers(player1,player2);
     }
 
     @Test
@@ -96,6 +181,23 @@ public class TestTask1 {
 
         assertEquals(player1.getLocation().getX(),6.0,EPSILON);
         assertEquals(player1.getLocation().getY(),2.5,EPSILON);
+
+        player1.getVelocity().setX(0.0);
+        player1.getVelocity().setY(0.0);
+
+        test.updateObject(player1,0.0);
+        assertEquals(player1.getLocation().getX(),6.0,EPSILON);
+        assertEquals(player1.getLocation().getY(),2.5,EPSILON);
+
+        Vector2D location2 = new Vector2D(5.65,7.89);
+        Player player2 = new Player(location2,100);
+
+        player2.getVelocity().setX(7.891234);
+        player2.getVelocity().setY(-5.678912345);
+
+        test.updateObject(player2,-9.5678213);
+        assertEquals(player2.getLocation().getX(),-69.8519167485,EPSILON);
+        assertEquals(player2.getLocation().getY(),62.2248184953,EPSILON);
     }
 
     @Test
