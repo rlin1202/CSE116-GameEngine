@@ -334,5 +334,4 @@ public class TestTask1 {
         assertEquals(4.0, player.getLocation().getX(), EPSILON);
         assertEquals(1.5, player.getLocation().getY(), EPSILON);
     }
-
 }

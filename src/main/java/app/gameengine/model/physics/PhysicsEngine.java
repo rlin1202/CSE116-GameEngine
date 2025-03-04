@@ -66,7 +66,7 @@ public class PhysicsEngine {
         double hb2Y = hb2.getLocation().getY();
         double hb2Y2 = hb2.getLocation().getY() + hb2.getDimensions().getY();
 
-        if (hb2X >= hb1X  && hb2X <= hb1X2){
+        /*if (hb2X >= hb1X  && hb2X <= hb1X2){
             if (hb2Y >= hb1Y && hb2Y <= hb1Y2){
                 return true;
             }else if (hb2Y2 >= hb1Y && hb2Y2 <= hb1Y2){
@@ -85,5 +85,15 @@ public class PhysicsEngine {
         }else{
             return false;
         }
+         */
+       if (hb1X2 < hb2X || hb2X2 < hb1X){
+           return false;
+       }else{
+           if(hb1Y2 < hb2Y || hb2Y2 < hb1Y){
+               return false;
+           }else{
+               return true;
+           }
+       }
     }
 }
