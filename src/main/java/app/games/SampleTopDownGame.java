@@ -2,6 +2,7 @@ package app.games;
 
 import app.gameengine.Game;
 import app.gameengine.Level;
+import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.physics.Vector2D;
 import app.games.commonobjects.Goal;
 import app.games.topdownobjects.Enemy;
@@ -10,23 +11,54 @@ import app.games.commonobjects.Wall;
 import app.games.topdownobjects.Tower;
 
 public class SampleTopDownGame extends Game {
+    private LinkedListNode<Level> levelList;
+
+    public LinkedListNode<Level> getLevelList(){
+        return levelList;
+    }
+
+    public void setLevelList(LinkedListNode<Level> levels){
+        this.levelList = levels;
+    }
+
+    public void addLevel(Level level){
+        if (levelList == null) {
+            levelList = new LinkedListNode<>(level,null);
+        }else{
+            levelList.append(level);
+        }
+    }
+
+    public void removeLevelByName(String name){
+        LinkedListNode<Level> current = levelList;
+        if (levelList.getValue().getName().equals(name)) {
+            levelList = levelList.getNext();
+        }
+        while (current != null){
+            if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
+                current.setNext(current.getNext().getNext());
+                break;
+            }
+            current = current.getNext();
+        }
+    }
 
     public SampleTopDownGame() {
         this.init();
     }
 
     public void init() {
+        this.addLevel(levelZero());
+        this.addLevel(levelOne());
+        this.addLevel(levelTwo());
         this.loadLevel(levelZero());
     }
 
     @Override
     public void advanceLevel(){
-        if(this.getCurrentLevel().getName().equals("level0")){
-            this.loadLevel(this.levelOne());
-        }else if(this.getCurrentLevel().getName().equals("level1")){
-            this.loadLevel(this.levelTwo());
-        }else if(this.getCurrentLevel().getName().equals("level2")){
-            // You've won!
+        while (levelList != null){
+            this.loadLevel(levelList.getValue());
+            levelList = levelList.getNext();
         }
     }
 
