@@ -36,7 +36,11 @@ public class SampleTopDownGame extends Game {
         }
         while (current != null){
             if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
-                current.setNext(current.getNext().getNext());
+                if (current.getNext().getValue() == null){
+                    current.setNext(null);
+                }else{
+                    current.setNext(current.getNext().getNext());
+                }
                 break;
             }
             current = current.getNext();
@@ -56,10 +60,7 @@ public class SampleTopDownGame extends Game {
 
     @Override
     public void advanceLevel(){
-        while (levelList != null){
-            this.loadLevel(levelList.getValue());
-            levelList = levelList.getNext();
-        }
+
     }
 
     public Level levelZero() {
