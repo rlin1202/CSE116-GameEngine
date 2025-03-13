@@ -30,20 +30,20 @@ public class SampleTopDownGame extends Game {
     }
 
     public void removeLevelByName(String name){
-        LinkedListNode<Level> current = levelList;
-        if (levelList.getValue().getName().equals(name)) {
-            levelList = levelList.getNext();
-        }
-        while (current != null){
-            if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
-                if (current.getNext().getValue() == null){
-                    current.setNext(null);
-                }else{
-                    current.setNext(current.getNext().getNext());
-                }
-                break;
+        if (levelList != null) {
+            LinkedListNode<Level> current = levelList;
+            if (levelList.getValue().getName().equals(name)) {
+                levelList = levelList.getNext();
             }
-            current = current.getNext();
+            while (current != null){
+                if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
+                    current.setNext(current.getNext().getNext());
+                    break;
+                }
+                current = current.getNext();
+            }
+        }else{
+            return ;
         }
     }
 
@@ -57,10 +57,19 @@ public class SampleTopDownGame extends Game {
         this.addLevel(levelTwo());
         this.loadLevel(levelZero());
     }
-
+    public void advanceLevelHelper(LinkedListNode<Level> level){
+        if (level.getNext() == null){
+            return;
+        }
+        if (this.getCurrentLevel().getName().equals(level.getValue().getName())) {
+            this.loadLevel(level.getNext().getValue());
+        }else{
+            advanceLevelHelper(level.getNext() );
+        }
+    }
     @Override
     public void advanceLevel(){
-
+        advanceLevelHelper(levelList);
     }
 
     public Level levelZero() {
