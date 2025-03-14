@@ -34,6 +34,7 @@ public class SampleTopDownGame extends Game {
             LinkedListNode<Level> current = levelList;
             if (levelList.getValue().getName().equals(name)) {
                 levelList = levelList.getNext();
+                return;
             }
             while (current != null){
                 if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
@@ -42,8 +43,6 @@ public class SampleTopDownGame extends Game {
                 }
                 current = current.getNext();
             }
-        }else{
-            return ;
         }
     }
 
@@ -69,7 +68,11 @@ public class SampleTopDownGame extends Game {
     }
     @Override
     public void advanceLevel(){
-        advanceLevelHelper(levelList);
+        if (this.levelList == null){
+            return;
+        }else{
+            advanceLevelHelper(levelList);
+        }
     }
 
     public Level levelZero() {
