@@ -5,6 +5,7 @@ import app.gameengine.Level;
 import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.physics.Vector2D;
 import app.games.commonobjects.Goal;
+import app.games.commonobjects.Potion;
 import app.games.topdownobjects.Enemy;
 import app.games.topdownobjects.TopDownLevel;
 import app.games.commonobjects.Wall;
@@ -47,7 +48,7 @@ public class SampleTopDownGame extends Game {
     }
 
     public SampleTopDownGame() {
-        this.init();
+        super();
     }
 
     public void init() {

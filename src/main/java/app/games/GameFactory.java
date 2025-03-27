@@ -18,8 +18,8 @@ public class GameFactory {
              * own game. For information on how a game should be setup,
              * checkout `SampleTopDownGame.java`
              */
-            case "your game here":
-                // game = new YourAmazingGame();
+            case "platformer game":
+                game = new PlatformerGame();
                 break;
             default:
                 System.out.println("No such game");

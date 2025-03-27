@@ -10,6 +10,7 @@ public abstract class DynamicGameObject extends GameObject {
     private int maxHP;
     private int currentHP;
 
+    private boolean onGround = false;
 
     public DynamicGameObject(Vector2D location, int maxHP) {
         super(location);
@@ -45,6 +46,14 @@ public abstract class DynamicGameObject extends GameObject {
 
     public Vector2D getVelocity() {
         return this.velocity;
+    }
+
+    public boolean isOnGround() {
+        return onGround;
+    }
+
+    public void setOnGround(boolean onGround) {
+        this.onGround = onGround;
     }
 
     @Override

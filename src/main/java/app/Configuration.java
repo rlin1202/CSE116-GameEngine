@@ -10,7 +10,7 @@ public class Configuration {
      * create a different style of game, you would change this string and update
      * the switch statement in `GameFactory.java`
      */
-    public static final String game = "sample top down game";
+    public static final String game = "platformer game";
 
     /**
      * Sprite size in pixels

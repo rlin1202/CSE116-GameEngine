@@ -1,6 +1,7 @@
 package app.gameengine;
 
 import app.gameengine.graphics.SpriteGraphics;
+import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.gameobjects.GameObject;
 import app.gameengine.model.gameobjects.Player;
 import app.gameengine.model.physics.Vector2D;
@@ -18,12 +19,48 @@ public class Game {
     private Player player = new Player(new Vector2D(0.0, 0.0), 10);
     private Level currentLevel;
     private long lastUpdate = 0L;
+    protected LinkedListNode<Level> levelList;
     protected String displayString = "This is where UI information would go, like HP, number of keys, or inventory";
 
+
     public Game() {
+        init();
+    }
+    public void init(){
+
+    }
+    public LinkedListNode<Level> getLevelList(){
+        return levelList;
     }
 
+    public void setLevelList(LinkedListNode<Level> levels){
+        this.levelList = levels;
+    }
 
+    public void addLevel(Level level){
+        if (levelList == null) {
+            levelList = new LinkedListNode<>(level,null);
+        }else{
+            levelList.append(level);
+        }
+    }
+
+    public void removeLevelByName(String name){
+        if (levelList != null) {
+            LinkedListNode<Level> current = levelList;
+            if (levelList.getValue().getName().equals(name)) {
+                levelList = levelList.getNext();
+                return;
+            }
+            while (current != null){
+                if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
+                    current.setNext(current.getNext().getNext());
+                    break;
+                }
+                current = current.getNext();
+            }
+        }
+    }
     public Player getPlayer() {
         return player;
     }
