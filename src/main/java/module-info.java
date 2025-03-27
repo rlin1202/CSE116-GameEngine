@@ -5,7 +5,8 @@ module app {
     requires junit;
     requires java.desktop;
     requires org.apache.commons.lang3;
-    
+    requires jdk.incubator.vector;
+
     exports app.tests to junit;
 
     opens app.gameengine.graphics to javafx.fxml;
