@@ -26,13 +26,9 @@ public class PlatformerWall extends Wall {
         double wallY2 = this.y + this.getDimensions().getY();
 
         super.collideWithDynamicObject(gameObject);
-        if (gameObjectX2 < wallX || wallX2 < gameObjectX){
-            gameObject.setOnGround(false);
-        }else{
-            if(gameObjectY2 < wallY || wallY2 < gameObjectY){
-                gameObject.setOnGround(false);
-            }else{
-                gameObject.getVelocity().setY(0);
+        if(gameObjectX < wallX2 && gameObjectX2 > wallX){
+            gameObject.getVelocity().setY(0.0);
+            if(gameObjectY < wallY){
                 gameObject.setOnGround(true);
             }
         }
