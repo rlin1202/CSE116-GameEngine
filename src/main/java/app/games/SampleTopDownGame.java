@@ -57,24 +57,6 @@ public class SampleTopDownGame extends Game {
         this.addLevel(levelTwo());
         this.loadLevel(levelZero());
     }
-    public void advanceLevelHelper(LinkedListNode<Level> level){
-        if (level.getNext() == null){
-            return;
-        }
-        if (this.getCurrentLevel().getName().equals(level.getValue().getName())) {
-            this.loadLevel(level.getNext().getValue());
-        }else{
-            advanceLevelHelper(level.getNext() );
-        }
-    }
-    @Override
-    public void advanceLevel(){
-        if (this.levelList == null){
-            return;
-        }else{
-            advanceLevelHelper(levelList);
-        }
-    }
 
     public Level levelZero() {
         Level firstLevel = new TopDownLevel(this, 12, 8, "level0");

@@ -96,8 +96,24 @@ public class Game {
         this.lastUpdate = timestamp;
     }
 
-    public void advanceLevel(){
-
+    public void advanceLevelHelper(LinkedListNode<Level> level){
+        if (level.getNext() == null){
+            return;
+        }
+        if (this.getCurrentLevel().getName().equals(level.getValue().getName())) {
+            this.loadLevel(level.getNext().getValue());
+        }else{
+            advanceLevelHelper(level.getNext() );
+        }
     }
+
+    public void advanceLevel(){
+        if (this.levelList == null){
+            return;
+        }else{
+            advanceLevelHelper(levelList);
+        }
+    }
+
 
 }

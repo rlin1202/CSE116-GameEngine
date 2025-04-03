@@ -15,7 +15,6 @@ public class PlatformerLevel extends Level {
     @Override
     public void wallOffBoundary() {
         for (int i = 0; i < this.getWidth(); i++) {
-
             this.getStaticObjects().add(new PlatformerWall(i, 0));
             this.getStaticObjects().add(new PlatformerWall(i, this.getHeight() - 1));
         }
