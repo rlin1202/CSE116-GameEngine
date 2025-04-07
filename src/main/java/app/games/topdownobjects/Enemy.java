@@ -17,20 +17,17 @@ import static app.gameengine.model.ai.Pathfinding.findPath;
 public class Enemy extends DynamicGameObject {
 
     private int strength;
-    private LinkedListNode<Vector2D> path;
 
     public Enemy(Vector2D location) {
         this(location, 3);
     }
-
-    public void setPath(LinkedListNode<Vector2D> path) {
-        this.path = path;
+    public Enemy(Vector2D location, int strength) {
+        super(location, 10);
+        this.strength = strength;
+        this.spriteSheetFilename = "Characters/Monsters/Demons/ArmouredRedDemon.png";
+        this.defaultSpriteLocation = new SpriteLocation(0, 2);
     }
-
-    public LinkedListNode<Vector2D> getPath() {
-        return path;
-    }
-
+    /*
     public void update(double time, Level level) {
         Vector2D enemy = new Vector2D(this.getLocation().getX(), this.getLocation().getY());
         Vector2D player = new Vector2D(level.getPlayer().getLocation().getX(), level.getPlayer().getLocation().getY());
@@ -60,21 +57,15 @@ public class Enemy extends DynamicGameObject {
             }
         }
     }
-
-
-
-    public Enemy(Vector2D location, int strength) {
-        super(location, 10);
-        this.strength = strength;
-        this.spriteSheetFilename = "Characters/Monsters/Demons/ArmouredRedDemon.png";
-        this.defaultSpriteLocation = new SpriteLocation(0, 2);
-    }
-
+     */
 
     @Override
     public void collideWithDynamicObject(DynamicGameObject otherObject) {
         if(otherObject.isPlayer()){
-            otherObject.destroy();
+            if(otherObject.getInvincibilityFrames() <= 0.0){
+                otherObject.takeDamage(this.strength);
+                otherObject.setInvincibilityFrames(0.5);
+            }
         }
     }
 

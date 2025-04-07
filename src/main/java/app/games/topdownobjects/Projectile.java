@@ -31,7 +31,7 @@ public class Projectile extends DynamicGameObject {
     @Override
     public void collideWithDynamicObject(DynamicGameObject otherObject) {
         if(!otherObject.isPlayer()){
-            otherObject.destroy();
+            otherObject.takeDamage(this.damage);
             this.destroy();
         }
     }

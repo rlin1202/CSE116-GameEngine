@@ -1,5 +1,7 @@
 package app.gameengine.model.gameobjects;
 
+import app.gameengine.Level;
+import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.physics.Vector2D;
 
 public abstract class DynamicGameObject extends GameObject {
@@ -9,8 +11,9 @@ public abstract class DynamicGameObject extends GameObject {
     private Vector2D orientation = new Vector2D(0.0, 1.0);
     private int maxHP;
     private int currentHP;
-
+    private double iframes = 0.0;
     private boolean onGround = false;
+    private LinkedListNode<Vector2D> path;
 
     public DynamicGameObject(Vector2D location, int maxHP) {
         super(location);
@@ -56,6 +59,28 @@ public abstract class DynamicGameObject extends GameObject {
         this.onGround = onGround;
     }
 
+    public double getInvincibilityFrames(){
+        return iframes;
+    }
+
+    public void setInvincibilityFrames(double iframes){
+        this.iframes = iframes;
+    }
+    public void setPath(LinkedListNode<Vector2D> path) {
+        this.path = path;
+    }
+
+    public LinkedListNode<Vector2D> getPath() {
+        return path;
+    }
+    @Override
+    public void update(double dt, Level level) {
+        super.update(dt,level);
+        this.iframes-=dt;
+        if(this.currentHP <= 0){
+            this.destroy();
+        }
+    }
     @Override
     public boolean isDestroyed() {
         return super.isDestroyed();
