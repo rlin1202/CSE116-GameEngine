@@ -1,6 +1,7 @@
 package app.gameengine.model.gameobjects;
 
 import app.gameengine.Level;
+import app.gameengine.model.ai.DecisionTree;
 import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.physics.Vector2D;
 
@@ -14,6 +15,8 @@ public abstract class DynamicGameObject extends GameObject {
     private double iframes = 0.0;
     private boolean onGround = false;
     private LinkedListNode<Vector2D> path;
+
+    private DecisionTree decisionTree;
 
     public DynamicGameObject(Vector2D location, int maxHP) {
         super(location);
@@ -73,12 +76,21 @@ public abstract class DynamicGameObject extends GameObject {
     public LinkedListNode<Vector2D> getPath() {
         return path;
     }
+    public DecisionTree getDecisionTree() {
+        return decisionTree;
+    }
+    public void setDecisionTree(DecisionTree decisionTree) {
+        this.decisionTree = decisionTree;
+    }
     @Override
     public void update(double dt, Level level) {
         super.update(dt,level);
         this.iframes-=dt;
         if(this.currentHP <= 0){
             this.destroy();
+        }
+        if(this.decisionTree != null){
+            decisionTree.traverse(this,level,dt);
         }
     }
     @Override
