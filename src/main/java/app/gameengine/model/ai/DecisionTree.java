@@ -7,12 +7,12 @@ import app.gameengine.model.gameobjects.DynamicGameObject;
 public class DecisionTree {
     private BinaryTreeNode<Decision> treeNode;
     public DecisionTree(BinaryTreeNode<Decision> treeNode){
-        setTreeNode(treeNode);
+        setTree(treeNode);
     }
-    public BinaryTreeNode<Decision> getTreeNode(){
+    public BinaryTreeNode<Decision> getTree(){
         return treeNode;
     }
-    public void setTreeNode(BinaryTreeNode<Decision> treeNode){
+    public void setTree(BinaryTreeNode<Decision> treeNode){
         this.treeNode = treeNode;
     }
     public Decision traverse(BinaryTreeNode<Decision> tree,DynamicGameObject gameObject, Level level,double dt){

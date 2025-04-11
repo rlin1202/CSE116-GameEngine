@@ -19,7 +19,11 @@ public class Enemy extends DynamicGameObject {
 
     private int strength;
 
-    public Enemy(Vector2D location, int strength, DecisionTree decisionTree) {
+    public Enemy(Vector2D location) {
+        this(location, 3);
+    }
+
+    public Enemy(Vector2D location, int strength) {
         super(location, 10);
         this.strength = strength;
         this.spriteSheetFilename = "Characters/Monsters/Demons/ArmouredRedDemon.png";
