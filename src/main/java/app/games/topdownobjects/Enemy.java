@@ -3,6 +3,8 @@ package app.games.topdownobjects;
 import app.gameengine.Level;
 import app.gameengine.graphics.SpriteLocation;
 import app.gameengine.model.ai.DecisionTree;
+import app.gameengine.model.ai.MoveTowardsPlayer;
+import app.gameengine.model.datastructures.BinaryTreeNode;
 import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.gameobjects.DynamicGameObject;
 import app.gameengine.model.physics.Vector2D;
@@ -20,7 +22,7 @@ public class Enemy extends DynamicGameObject {
     private int strength;
 
     public Enemy(Vector2D location) {
-        this(location, 3);
+        this(location,3);
     }
 
     public Enemy(Vector2D location, int strength) {
@@ -28,6 +30,7 @@ public class Enemy extends DynamicGameObject {
         this.strength = strength;
         this.spriteSheetFilename = "Characters/Monsters/Demons/ArmouredRedDemon.png";
         this.defaultSpriteLocation = new SpriteLocation(0, 2);
+        this.setDecisionTree(new DecisionTree(new BinaryTreeNode<>(new MoveTowardsPlayer("target"),null,null)));
     }
     /*
     public void update(double time, Level level) {

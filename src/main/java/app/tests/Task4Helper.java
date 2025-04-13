@@ -14,7 +14,7 @@ public class Task4Helper extends Decision {
 
     @Override
     public void doAction(DynamicGameObject gameObject, Level level, double dt){
-        gameObject.setHP(100);
+        gameObject.setHP(75);
     }
 
     @Override

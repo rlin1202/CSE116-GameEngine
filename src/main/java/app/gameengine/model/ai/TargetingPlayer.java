@@ -14,10 +14,10 @@ public class TargetingPlayer extends Decision{
     @Override
     public boolean decide(DynamicGameObject gameObject, Level level, double dt){
         LinkedListNode<Vector2D> pathing = gameObject.getPath();
-        Vector2D path = pathing.getValue();
-        if(path == null){
+        if(pathing == null){
             return false;
         }
+        Vector2D path = pathing.getValue();
         while(pathing.getNext() != null){
             path = pathing.getNext().getValue();
             pathing = pathing.getNext();

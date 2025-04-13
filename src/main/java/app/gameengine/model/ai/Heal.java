@@ -15,11 +15,12 @@ public class Heal extends Decision{
     @Override
     public void doAction(DynamicGameObject gameObject, Level level, double dt){
         this.timeSpent += dt;
-        if(timeSpent >= cooldown){
+
+        gameObject.getVelocity().setX(0.0);
+        gameObject.getVelocity().setY(0.0);
+        while(timeSpent >= cooldown){
             gameObject.setHP(gameObject.getHP() + healAmount);
-            timeSpent = 0;
+            timeSpent -= cooldown;
         }
-        gameObject.getLocation().setX(0);
-        gameObject.getLocation().setY(0);
     }
 }

@@ -12,41 +12,6 @@ import app.games.commonobjects.Wall;
 import app.games.topdownobjects.Tower;
 
 public class SampleTopDownGame extends Game {
-    private LinkedListNode<Level> levelList;
-
-    public LinkedListNode<Level> getLevelList(){
-        return levelList;
-    }
-
-    public void setLevelList(LinkedListNode<Level> levels){
-        this.levelList = levels;
-    }
-
-    public void addLevel(Level level){
-        if (levelList == null) {
-            levelList = new LinkedListNode<>(level,null);
-        }else{
-            levelList.append(level);
-        }
-    }
-
-    public void removeLevelByName(String name){
-        if (levelList != null) {
-            LinkedListNode<Level> current = levelList;
-            if (levelList.getValue().getName().equals(name)) {
-                levelList = levelList.getNext();
-                return;
-            }
-            while (current != null){
-                if (current.getNext() != null && current.getNext().getValue().getName().equals(name)) {
-                    current.setNext(current.getNext().getNext());
-                    break;
-                }
-                current = current.getNext();
-            }
-        }
-    }
-
     public SampleTopDownGame() {
         super();
     }
