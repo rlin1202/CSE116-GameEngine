@@ -18,10 +18,6 @@ public class Player extends DynamicGameObject {
         return true;
     }
 
-    public void cycleInventory(){
-
-    }
-
     private void initializeAnimations(){
         this.spriteSheetFilename = "Characters/Soldiers/Melee/CyanMelee/AxemanCyan.png";
         this.animations.put("walk_down", new ArrayList<>(Arrays.asList(

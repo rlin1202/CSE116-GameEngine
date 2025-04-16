@@ -17,12 +17,16 @@ public class Projectile extends DynamicGameObject {
 
     public Projectile(Vector2D location, int damage) {
         super(location, 100);
-        this.damage = damage;
+        setDamage(damage);
         this.spriteSheetFilename = "Objects/Bullet.png";
         this.defaultSpriteLocation = new SpriteLocation(1,1);
     }
-
-
+    public int getDamage(){
+        return damage;
+    }
+    public void setDamage(int damage){
+        this.damage = damage;
+    }
     @Override
     public void collideWithStaticObject(StaticGameObject otherObject) {
         this.destroy();

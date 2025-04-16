@@ -4,6 +4,9 @@ import app.gameengine.Level;
 import app.gameengine.model.ai.DecisionTree;
 import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.physics.Vector2D;
+import app.games.topdownobjects.Projectile;
+
+import java.util.ArrayList;
 
 public abstract class DynamicGameObject extends GameObject {
 
@@ -17,6 +20,8 @@ public abstract class DynamicGameObject extends GameObject {
     private LinkedListNode<Vector2D> path;
 
     private DecisionTree decisionTree;
+    private ArrayList<CollectibleGameObject> inventory;
+    private CollectibleGameObject activeItem;
 
     public DynamicGameObject(Vector2D location, int maxHP) {
         super(location);
@@ -81,6 +86,39 @@ public abstract class DynamicGameObject extends GameObject {
     }
     public void setDecisionTree(DecisionTree decisionTree) {
         this.decisionTree = decisionTree;
+    }
+    public void addInventoryItem(CollectibleGameObject item){
+        if(inventory.isEmpty()){
+            activeItem = item;
+        }
+        inventory.add(item);
+    }
+    public void removeActiveItem(){
+        for (int i = 0;i < inventory.size();i++){
+            if (inventory.get(i).getItemID().equals(activeItem.getItemID())){
+                inventory.remove(i);
+            }
+        }
+    }
+    public CollectibleGameObject getActiveItem(){
+        return activeItem;
+    }
+    public String getActiveItemID(){
+        return activeItem.getItemID();
+    }
+    public void cycleInventory(){
+        if (inventory.indexOf(activeItem) == inventory.size() - 1){
+            activeItem = inventory.get(0);
+        }else{
+            activeItem = inventory.get(inventory.indexOf(activeItem) + 1);
+        }
+    }
+    public void fireProjectile(Projectile projectile,double speed,Level level){
+        projectile.getLocation().setX(this.getLocation().getX());
+        projectile.getLocation().setY(this.getLocation().getY());
+        projectile.getVelocity().setX(this.getOrientation().getX() * speed);
+        projectile.getVelocity().setY(this.getOrientation().getY() * speed);
+        level.getDynamicObjects().add(projectile);
     }
     @Override
     public void update(double dt, Level level) {

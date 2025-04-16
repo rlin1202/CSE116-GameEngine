@@ -112,10 +112,9 @@ public abstract class Level {
     }
 
     public void actionButtonPressed() {
-        Projectile projectile = new Projectile(new Vector2D(this.game.getPlayer().getLocation().getX(), this.game.getPlayer().getLocation().getY()), 5);
-        projectile.getVelocity().setX(this.game.getPlayer().getOrientation().getX() * 10);
-        projectile.getVelocity().setY(this.game.getPlayer().getOrientation().getY() * 10);
-        this.getDynamicObjects().add(projectile);
+        if (this.getPlayer().getActiveItemID() != null){
+            this.getPlayer().getActiveItem().use();
+        }
     }
 
     public void jumpButtonPressed(){
