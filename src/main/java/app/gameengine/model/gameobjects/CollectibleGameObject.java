@@ -16,5 +16,5 @@ public abstract class CollectibleGameObject extends DynamicGameObject{
     public void takeDamage(int damage){
         return;
     }
-    abstract void use(Level level);
+    public abstract void use(Level level);
 }

@@ -113,7 +113,7 @@ public abstract class Level {
 
     public void actionButtonPressed() {
         if (this.getPlayer().getActiveItemID() != null){
-            this.getPlayer().getActiveItem().use();
+            this.getPlayer().getActiveItem().use(this);
         }
     }
 

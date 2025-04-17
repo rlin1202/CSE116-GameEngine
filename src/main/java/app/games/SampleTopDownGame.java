@@ -6,10 +6,8 @@ import app.gameengine.model.datastructures.LinkedListNode;
 import app.gameengine.model.physics.Vector2D;
 import app.games.commonobjects.Goal;
 import app.games.commonobjects.Potion;
-import app.games.topdownobjects.Enemy;
-import app.games.topdownobjects.TopDownLevel;
+import app.games.topdownobjects.*;
 import app.games.commonobjects.Wall;
-import app.games.topdownobjects.Tower;
 
 public class SampleTopDownGame extends Game {
     public SampleTopDownGame() {
@@ -17,12 +15,38 @@ public class SampleTopDownGame extends Game {
     }
 
     public void init() {
+        this.addLevel(levelWithCollectables());
         this.addLevel(levelZero());
         this.addLevel(levelOne());
         this.addLevel(levelTwo());
-        this.loadLevel(levelZero());
+        this.loadLevel(levelWithCollectables());
     }
+    public Level levelWithCollectables(){
+        Level level = new TopDownLevel(this, 11, 11, "levelWithCollectables!");
 
+        level.getStaticObjects().add(new Goal(9, 5, this));
+
+        level.getPlayerStartLocation().setX(1.0);
+        level.getPlayerStartLocation().setY(5.0);
+
+        Enemy e1 = new Enemy(new Vector2D(8,1));
+        e1.setDecisionTree(null);
+        level.getDynamicObjects().add(e1);
+
+        Enemy e2 = new Enemy(new Vector2D(8,9));
+        e2.setDecisionTree(null);
+        level.getDynamicObjects().add(e2);
+
+        level.getDynamicObjects().add(new AxePickup(new Vector2D(4,4)));
+
+        level.getDynamicObjects().add(new MagicPickup(new Vector2D(4,6)));
+
+        level.getDynamicObjects().add(new PotionPickup(new Vector2D(4,2), 7));
+
+        level.getDynamicObjects().add(new PotionPickup(new Vector2D(4,8), 2));
+
+        return level;
+    }
     public Level levelZero() {
         Level firstLevel = new TopDownLevel(this, 12, 8, "level0");
         firstLevel.getStaticObjects().add(new Wall(4, 1));

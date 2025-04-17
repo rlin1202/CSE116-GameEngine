@@ -88,7 +88,7 @@ public abstract class DynamicGameObject extends GameObject {
         this.decisionTree = decisionTree;
     }
     public void addInventoryItem(CollectibleGameObject item){
-        if(inventory.isEmpty()){
+        if (inventory == null){
             activeItem = item;
         }
         inventory.add(item);
@@ -101,10 +101,19 @@ public abstract class DynamicGameObject extends GameObject {
         }
     }
     public CollectibleGameObject getActiveItem(){
-        return activeItem;
+        if(this.inventory == null){
+            return null;
+        }else{
+            return activeItem;
+        }
+
     }
     public String getActiveItemID(){
-        return activeItem.getItemID();
+        if(this.inventory == null){
+            return "No item equipped";
+        }else{
+            return activeItem.getItemID();
+        }
     }
     public void cycleInventory(){
         if (inventory.indexOf(activeItem) == inventory.size() - 1){
