@@ -20,7 +20,7 @@ public abstract class DynamicGameObject extends GameObject {
     private LinkedListNode<Vector2D> path;
 
     private DecisionTree decisionTree;
-    private ArrayList<CollectibleGameObject> inventory;
+    private ArrayList<CollectibleGameObject> inventory = new ArrayList<>();
     private CollectibleGameObject activeItem;
 
     public DynamicGameObject(Vector2D location, int maxHP) {
@@ -88,28 +88,24 @@ public abstract class DynamicGameObject extends GameObject {
         this.decisionTree = decisionTree;
     }
     public void addInventoryItem(CollectibleGameObject item){
-        if (inventory == null){
+        if (inventory == null || inventory.isEmpty()){
             activeItem = item;
         }
         inventory.add(item);
     }
     public void removeActiveItem(){
-        for (int i = 0;i < inventory.size();i++){
-            if (inventory.get(i).getItemID().equals(activeItem.getItemID())){
-                inventory.remove(i);
-            }
-        }
+        inventory.remove(inventory.get(inventory.indexOf(activeItem)));
+
     }
     public CollectibleGameObject getActiveItem(){
-        if(this.inventory == null){
+        if(this.inventory == null || inventory.isEmpty()){
             return null;
         }else{
             return activeItem;
         }
-
     }
     public String getActiveItemID(){
-        if(this.inventory == null){
+        if(this.inventory == null || inventory.isEmpty()){
             return "No item equipped";
         }else{
             return activeItem.getItemID();

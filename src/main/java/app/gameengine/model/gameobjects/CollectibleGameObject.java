@@ -12,6 +12,15 @@ public abstract class CollectibleGameObject extends DynamicGameObject{
     public String getItemID(){
         return itemID;
     }
+
+    @Override
+    public void collideWithDynamicObject(DynamicGameObject otherObject) {
+        if(otherObject.isPlayer()){
+            otherObject.addInventoryItem(this);
+            destroy();
+        }
+    }
+
     @Override
     public void takeDamage(int damage){
         return;

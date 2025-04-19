@@ -67,7 +67,7 @@ public class Game {
     
     public String getUI() {
         return this.getCurrentLevel().getName() + " - " + this.player.getHP() + "/" + this.player.getMaxHP() + " - "
-        + this.displayString + " - " + this.player.getActiveItemID();
+         + " - " + this.player.getActiveItemID();
     }
 
 
